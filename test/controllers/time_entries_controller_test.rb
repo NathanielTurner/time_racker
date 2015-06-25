@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class TimeEntryControllerTest < ActionController::TestCase
+class TimeEntriesControllerTest < ActionController::TestCase
   setup do
     @time_entry = time_entries(:one)
   end
@@ -18,11 +18,11 @@ class TimeEntryControllerTest < ActionController::TestCase
   end
 
   test "should create time_entry" do
-    assert_not_nil assigns(:time_entry)
     assert_difference('TimeEntry.count') do
       post :create, time_entry: { duration: 1000}
     end
-
+    
+    assert_not_nil assigns(:time_entry)
     assert_redirected_to time_entries_path
   end
 
