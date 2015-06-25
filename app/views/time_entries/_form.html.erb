@@ -1,0 +1,21 @@
+<%= form_for(@time_entry) do |f| %>
+  <% if @term.errors.any? %>
+    <div class="alert alert-error">
+      <ul>
+        <% @term.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.label :duration do %>
+    <span class="field-label">Duration</span>
+    <%= f.number_field :duration %>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>
