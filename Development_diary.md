@@ -43,7 +43,7 @@
 ## Log
 (1.outline) I can create and view a time_entry table and enter a duration
 * requires a database table and model for time_entry with a field :duration
-* requires a controller with new, index and show actions
+* requires a controller with new, create, index and show actions
 * requires a new.html.erb view
 * requires a _new_form.html.erb partial
 * requires a show.html.erb view
