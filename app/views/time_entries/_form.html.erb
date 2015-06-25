@@ -1,9 +1,9 @@
 <%= form_for(@time_entry) do |f| %>
-  <% if @term.errors.any? %>
-    <div class="alert alert-error">
+  <% if @time_entry.errors.any? %>
+    <div id="error_explanation">
       <ul>
-        <% @term.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+        <% @time_entry.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
         <% end %>
       </ul>
     </div>
