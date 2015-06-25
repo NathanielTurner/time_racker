@@ -2,12 +2,10 @@ class TimeEntriesController < ApplicationController
 
   def new
     @time_entry = TimeEntry.new
-
   end
 
   def index
     @time_entries = TimeEntry.all
-
   end
 
   def create
@@ -17,10 +15,18 @@ class TimeEntriesController < ApplicationController
       if @time_entry.save
         format.html { redirect_to  time_entries_path, flash: {success: 'Time entry was successfuly recorded.'} }
       else
-        format.html { render action: 'new', flash: {error: 'There was an error recording this time entry. Check your input and try again. If error persists, Contact example@example.com'} }
-      end  
+        format.html { render action: 'new' }
+      end
     end
-
   end
 
+  private
+
+    def set_time_entry
+      @time_entry = TimeEntry.find(params[:id])
+    end
+
+    def time_entry_params
+      params.require(:time_entry).permit(:duration)
+    end
 end
