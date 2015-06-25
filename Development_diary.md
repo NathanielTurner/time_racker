@@ -41,7 +41,9 @@
 
 
 ## Log
-(1.outline) I can create and view a time_entry table and enter a duration
+(1.outline)
+
+I can create and view a time_entry table and enter a duration
 * requires a database table and model for time_entry with a field :duration
 * requires a controller with new, create, index and show actions
 * requires a new.html.erb view
@@ -51,5 +53,32 @@
 * requires a 'time_entry/new' route
 
 (1.test_setup)
+
+* controller test: test for new, index, create, show
+* fixture: populate with two time_entries one: duration: 1500, two: duration: 2000
+* model test: test fixtures are created correctly.
+
+(1.build)
+
+migration
+* time_entries table with field: duration:integer
+
+model
+
+base model for now
+
+controller
+* actions
+ * new
+  * assignment @time_entry = TimeEntry.new
+ * index
+  * assignment @time_entries = TimeEntry.all
+ * create
+  * assignment @time_entry = TimeEntry.new(time_entry_params)
+  * if it saves render index with a flash of successfully created.
+  * if it fails render new with a flash of error creating.
+
+views
+
 
 ## Current Issues or Problems
