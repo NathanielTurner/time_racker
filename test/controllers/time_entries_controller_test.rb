@@ -8,6 +8,7 @@ class TimeEntryControllerTest < ActionController::TestCase
   test "should get new" do
     get :new
     assert_response :success
+    assert_not_nil assigns(:time_entry)
   end
 
   test "should get index" do
@@ -17,16 +18,12 @@ class TimeEntryControllerTest < ActionController::TestCase
   end
 
   test "should create time_entry" do
+    assert_not_nil assigns(:time_entry)
     assert_difference('TimeEntry.count') do
       post :create, time_entry: { duration: 1000}
     end
 
-    assert_redirected_to time_entries_path(assigns(:time_entry))
+    assert_redirected_to time_entries_path
   end
 
-  test "should show time_entry" do
-    get :show, id: @time_entry
-    assert_response :success
-  end
-  
 end
