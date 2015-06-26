@@ -1,5 +1,9 @@
 #Time Tracker Development Diary
-
+##### Time Log
+Thursday - 5.5 Hours
+Friday -
+Saturday -
+Sunday -  
 ## Pieces and Components
 ### Big Picture Pieces
 * Organization
@@ -64,8 +68,7 @@ migration
 * time_entries table with field: duration:integer
 
 model
-
-base model for now
+*empty
 
 controller
 * actions
@@ -79,6 +82,18 @@ controller
   * if it fails render new with a flash of error creating.
 
 views
+* _form.html.erb
+  * one input field for duration
+  * basic form nothing special
+* index
+ * given all time_entries as param and loops over them and renders the duration field of each.
+* create
+no view but enables creating using strong params.
+
+(1.build.is_complete 06/25/2015 PM 6:30)
+(2.outline)
+(2.test_setup)
+(2.build)
 
 
 ## Current Issues or Problems
