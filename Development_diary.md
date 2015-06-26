@@ -1,6 +1,7 @@
 #Time Tracker Development Diary
 ##### Time Log
-Thursday - 5.5 Hours
+No initial time estimate, I plan on spending all the time I can on this every single day.
+Thursday - 7.5 Hours
 Friday -
 Saturday -
 Sunday -  
