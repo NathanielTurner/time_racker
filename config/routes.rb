@@ -4,4 +4,8 @@ Rails.application.routes.draw do
   get 'time_entries/index'
   get 'time_entries/create'
   resources :time_entries
+  get 'programmers/new'
+  get 'programmers/index'
+  get 'programmers/create'
+  resources :programmers
 end
