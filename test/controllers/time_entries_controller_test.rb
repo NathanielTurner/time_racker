@@ -21,7 +21,7 @@ class TimeEntriesControllerTest < ActionController::TestCase
     assert_difference('TimeEntry.count') do
       post :create, time_entry: { duration: 1000}
     end
-    
+
     assert_not_nil assigns(:time_entry)
     assert_redirected_to time_entries_path
   end
