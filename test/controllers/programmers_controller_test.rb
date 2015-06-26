@@ -2,10 +2,9 @@ require 'test_helper'
 
 class ProgrammersControllerTest < ActionController::TestCase
   setup do
-    @programmer_one = programmers(:one)
-    @programmer_two = programmers(:two)
+    @programmer_one = programmers(:john)
+    @programmer_two = programmers(:jane)
   end
-
 
     test "should get new" do
       get :new

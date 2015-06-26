@@ -1,0 +1,37 @@
+<%= form_for(@programmer) do |f| %>
+  <% if @programmer.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% @programmer.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.label :first_name do %>
+    <span class="field-label">First Name</span>
+    <%= f.number_field :first_name %>
+  <% end %>
+  <%= f.label :last_name do %>
+    <span class="field-label">Last Name</span>
+    <%= f.text_field :last_name %>
+  <% end %>
+  <%= f.label :email do %>
+    <span class="field-label">Email Address</span>
+    <%= f.text_field :email %>
+  <% end %>
+  <%= f.label :password do %>
+    <span class="field-label">Password</span>
+    <%= f.password_field :password %>
+  <% end %>
+  <%= f.label :password_confirmation do %>
+    <span class="field-label">Confirm Your Password</span>
+    <%= f.password_field :password_confirmation %>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>

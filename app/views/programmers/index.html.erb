@@ -1,0 +1,21 @@
+<h2>All Programmers</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Registered At</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @programmers.each do |programmer| %>
+      <tr>
+        <td><%= programmer.first_name %></td>
+        <td><%= programmer.last_name %></td>
+        <td><%= programmer.created_at.strftime("%m/%d/%Y") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
