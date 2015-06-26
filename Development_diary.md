@@ -50,12 +50,11 @@ Sunday -
 
 I can create and view a time_entry table and enter a duration
 * requires a database table and model for time_entry with a field :duration
-* requires a controller with new, create, index and show actions
+* requires a controller with new, create, and index
 * requires a new.html.erb view
 * requires a _new_form.html.erb partial
-* requires a show.html.erb view
-* Requires a show.html.erb view
-* requires a 'time_entry/new' route
+* requires a index.html.erb view
+* requires get 'time_entries/new', get 'time_entries/index' get  'time_entries/create' routes and resources :time_entries
 
 (1.test_setup)
 
@@ -93,6 +92,14 @@ no view but enables creating using strong params.
 
 (1.build.is_complete 06/25/2015 PM 6:30)
 (2.outline)
+
+I can create and view developers
+* requires a database migration and model for developer with field :first_name, :last_name, :email, :password:digest. model has_secure_password
+* requires a controller with new, create, and index actions
+* requires a new.html.erb view
+* requires a _new_form.html.erb partial
+* requires a index.html.erb view
+* requires get 'programmers/new', get 'programmers/index', get 'programmers/create' routes and resources :programmers
 (2.test_setup)
 (2.build)
 
