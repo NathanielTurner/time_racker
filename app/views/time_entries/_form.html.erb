@@ -10,8 +10,12 @@
   <% end %>
 
   <%= f.label :duration do %>
-    <span class="field-label">Duration</span>
+    <span class="field-label">Duration in Hours</span>
     <%= f.number_field :duration %>
+  <% end %> </br>
+  <%= f.label :date do %>
+    <span class="field-label">Date Time was Spent</span>
+    <%= f.date_field :date%>
   <% end %>
 
   <div class="actions">
