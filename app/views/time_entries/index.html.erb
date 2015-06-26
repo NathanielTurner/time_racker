@@ -10,7 +10,8 @@
   <tbody>
     <% @time_entries.each do |entry| %>
       <tr>
-        <td><%= entry.duration %></td>
+        <td id="duration"><%= entry.duration %></td>
+        <td id="date"><%= entry.date %></td>
       </tr>
     <% end %>
   </tbody>
