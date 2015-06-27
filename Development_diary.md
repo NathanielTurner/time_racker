@@ -2,7 +2,7 @@
 ##### Time Log
 No initial time estimate, I plan on spending all the time I can on this every single day.
 Thursday - 7.5 Hours
-Friday -
+Friday - 10 hours
 Saturday -
 Sunday -  
 ## Pieces and Components
@@ -46,9 +46,8 @@ Sunday -
 
 
 ## Log
-(1.outline)
-
-I can create and view a time_entry table and enter a duration
+Logs process during production of features. Numbers mark individual features.
+##### (1.outline) can create and view a time_entry table and enter a duration
 * requires a database table and model for time_entry with a field :duration
 * requires a controller with new, create, and index
 * requires a new.html.erb view
@@ -56,13 +55,7 @@ I can create and view a time_entry table and enter a duration
 * requires a index.html.erb view
 * requires get 'time_entries/new', get 'time_entries/index' get  'time_entries/create' routes and resources :time_entries
 
-(1.test_setup)
-
-* controller test: test for new, index, create, show
-* fixture: populate with two time_entries one: duration: 1500, two: duration: 2000
-* model test: test fixtures are created correctly.
-
-(1.build)
+##### (1.build)
 
 migration
 * time_entries table with field: duration:integer
@@ -90,8 +83,9 @@ views
 * create
 no view but enables creating using strong params.
 
-(1.build.is_complete 06/25/2015 PM 6:30)
-(2.outline)
+#### (1.build.is_complete 06/25/2015 PM 6:30)
+
+##### (2.outline)
 
 I can create and view developers
 * requires a database migration and model for developer with field :first_name, :last_name, :email, :password:digest. model has_secure_password
@@ -100,8 +94,35 @@ I can create and view developers
 * requires a _new_form.html.erb partial
 * requires a index.html.erb view
 * requires get 'programmers/new', get 'programmers/index', get 'programmers/create' routes and resources :programmers
-(2.test_setup)
-(2.build)
+#### (2.build.is_complete 06/26/2015 PM 5:00)
+#####(3.outline) Can create and view projects
 
+
+##### (3.build)
+migration
+* projects table with fields: :name:string, :time_limit:integer
+
+model
+*empty
+
+controller
+* actions
+ * new
+  * assignment @project = Project.new
+ * index
+  * assignment @projects = Project.all
+ * create
+  * assignment @project = Project.new(project_params)
+  * if it saves render index with a notice of success.
+  * if it fails render new with a notice of failure.
+
+views
+* _form.html.erb
+  * two input fields for name and time_limit
+  * basic form nothing special
+* index
+ * given all projects as param and loops over them and renders the name and time limit of each.
+* create
+no view but enables creating using strong params.
 
 ## Current Issues or Problems
