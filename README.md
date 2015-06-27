@@ -21,6 +21,7 @@ I will guide you through the steps here, which may be more helpful than the step
 Once done Rails needs to be configured to use capybara.
 These steps can be done in your lib/tasks files but I found it far less confusing to do it in the Rakefile.
 * Open your Rakefile, and below
+
 ##### Rails.application.load_tasks,
 place these two blocks of code
 
