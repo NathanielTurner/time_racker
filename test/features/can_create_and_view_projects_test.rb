@@ -17,6 +17,16 @@ class CanCreateAndViewProjectsTest < Capybara::Rails::TestCase
     assert page.has_css?('#time-limit', count: 2)
   end
 
+  test "form can be filled out and submited to create new project" do
+    visit time_entries_new_path
+    assert page.find('input[type="text"][name="project[name]"]')
+    assert page.find('input[type="number"][name="project[time_limit]"]')
 
+    assert_difference('TimeEntry.count') do
+      fill_in('Duration in Hours', with: 10)
+      fill_in('Date Time was Spent', with: '03/03/3030')
+      click_button('Create Time entry')
+    end
+  end
 
 end
