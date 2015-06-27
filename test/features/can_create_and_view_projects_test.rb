@@ -9,6 +9,14 @@ class CanCreateAndViewProjectsTest < Capybara::Rails::TestCase
     assert_content page, "Project List!"
   end
 
-  test " new lets you create projects by entering names and time limits
+  test "index page lists projects with names and time_limits" do
+    visit projects_path
+    assert page.has_css?('th', count: 2)
+    assert page.has_css?('tr', count: 3)
+    assert page.has_css?('#project-name', count: 2)
+    assert page.has_css?('#time-limit', count: 2)
   end
+
+
+
 end
