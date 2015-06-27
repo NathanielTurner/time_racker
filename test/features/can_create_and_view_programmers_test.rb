@@ -20,10 +20,10 @@ class CanCreateAndViewProgrammersTest < Capybara::Rails::TestCase
 
   test "index page lists programmer names and creation dates" do
     visit programmers_path
-    assert page.has_css?('tr', :count => 3)
-    assert page.has_css?('#first', :count => 2)
-    assert page.has_css?('#last', :count => 2)
-    assert page.has_css?('#join_date', :count => 2)
+    assert page.has_css?('tr', count: 3)
+    assert page.has_css?('#first', count: 2)
+    assert page.has_css?('#last', count: 2)
+    assert page.has_css?('#join_date', count: 2)
   end
 #how cool is this. it can find the input simply but what text is
 #rendered next to it. I really like this. Its so much more simple
@@ -31,11 +31,11 @@ class CanCreateAndViewProgrammersTest < Capybara::Rails::TestCase
   test "new programmers can be created" do
     assert_difference('Programmer.count') do
       visit programmers_new_path
-      fill_in('First Name', :with => 'first')
-      fill_in('Last Name', :with => 'last')
-      fill_in('Email Address', :with => 'firstlast@example.com')
-      fill_in('Password', :with => 'Seekrit')
-      fill_in('Confirm Your Password', :with => 'Seekrit')
+      fill_in('First Name', with: 'first')
+      fill_in('Last Name', with: 'last')
+      fill_in('Email Address', with: 'firstlast@example.com')
+      fill_in('Password', with: 'Seekrit')
+      fill_in('Confirm Your Password', with: 'Seekrit')
       click_button('Create Programmer')
     end
   end

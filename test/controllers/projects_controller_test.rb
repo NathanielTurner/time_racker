@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ProgrammersControllerTest < ActionController::TestCase
+class ProjectsControllerTest < ActionController::TestCase
 
     test "should get new" do
       get :new
