@@ -9,11 +9,10 @@
   </thead>
 
   <tbody>
-    <% @programmers.each do |programmer| %>
+    <% @projects.each do |project| %>
       <tr>
-        <td id="first"><%= programmer.first_name %></td>
-        <td id="last"><%= programmer.last_name %></td>
-        <td id="join_date"><%= programmer.created_at.strftime("%m/%d/%Y") %></td>
+        <td id="project-name"><%= project.first_name %></td>
+        <td id="time-limit"><%= project.last_name %></td>
       </tr>
     <% end %>
   </tbody>
