@@ -1,0 +1,20 @@
+<h2>Project List</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Project Name</th>
+      <th>Time Limit</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @programmers.each do |programmer| %>
+      <tr>
+        <td id="first"><%= programmer.first_name %></td>
+        <td id="last"><%= programmer.last_name %></td>
+        <td id="join_date"><%= programmer.created_at.strftime("%m/%d/%Y") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
