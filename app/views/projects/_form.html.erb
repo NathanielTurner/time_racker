@@ -1,0 +1,26 @@
+<%= form_for(@project) do |f| %>
+  <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% @project.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.label :name do %>
+    <span class="field-label">Project Name</span>
+    <%= f.text_field :name %>
+  <% end %> </br>
+
+  <%= f.label :time_limit do %>
+    <span class="field-label">Max Allowed Production Hours</span>
+    <%= f.number_field :time_limit %>
+  <% end %>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>
