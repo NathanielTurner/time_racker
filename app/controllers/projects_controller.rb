@@ -10,12 +10,14 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
-    if @project.save
-      format.html { redirect_to projects_path,
-          notice: {success: 'Project successfuly created'} }
-    else
-      format.html { render action: 'new',
-          notice: {error: 'Something prevented project from being saved'}}
+    respond_to do |format|
+      if @project.save
+        format.html { redirect_to projects_path,
+            notice: {success: 'Project successfuly created'} }
+      else
+        format.html { render action: 'new',
+            notice: {error: 'Something prevented project from being saved'}}
+      end
     end
   end
 
@@ -25,7 +27,7 @@ class ProjectsController < ApplicationController
     end
 
     def project_params
-      params.require(:projects).permit(:name, :time_limit)
+      params.require(:project).permit(:name, :time_limit)
     end
 
 end
