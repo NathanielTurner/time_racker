@@ -23,8 +23,8 @@ class CanCreateAndViewProjectsTest < Capybara::Rails::TestCase
     assert page.find('input[type="number"][name="project[time_limit]"]')
 
     assert_difference('TimeEntry.count') do
-      fill_in('Duration in Hours', with: 10)
-      fill_in('Date Time was Spent', with: '03/03/3030')
+      fill_in('Project Name', with: 10)
+      fill_in('Max Allowed Production Hours', with: '03/03/3030')
       click_button('Create Time entry')
     end
   end
