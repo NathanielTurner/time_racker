@@ -12,4 +12,7 @@ Rails.application.routes.draw do
   get 'projects/index'
   get 'projects/create'
   resources :projects
+  post '/sessions'
+  get '/signin' => 'sessions/new'
+  delete '/signout' => 'sessions/destroy'
 end
