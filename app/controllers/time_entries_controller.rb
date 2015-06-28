@@ -13,10 +13,11 @@ class TimeEntriesController < ApplicationController
 
     respond_to do |format|
       if @time_entry.save
-        format.html { redirect_to  projects_path,
-            flash: {success: 'Time entry was successfuly recorded.'} }
+        format.html { redirect_to  projects_path, flash[:notice] =
+            'Time entry was successfuly recorded.' }
       else
-        format.html { render action: 'new' }
+        format.html { render action: 'new' flash.now[:notice] =
+            'Something prevented this time entry from being saved.' }
       end
     end
   end
