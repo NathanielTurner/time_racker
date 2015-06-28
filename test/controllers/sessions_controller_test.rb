@@ -12,7 +12,11 @@ class SessionsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:title)
   end
 
-  
+  test "should post create" do
+    post :create
+    assert_response :success
+  end
+
 
   test "should set session[user_id] to programmer id" do
     post :create, session: { email: @programmer_one.email,
@@ -20,9 +24,10 @@ class SessionsControllerTest < ActionController::TestCase
     assert_equal @programmer_one.id, session[user_id]
   end
 
-  test "should delete destroy" do
+  test "should delete session" do
     delete destroy:
     assert_response :success
+    assert_equal nil, session[user_id]
   end
 
 #  test "create should validate programmer"
