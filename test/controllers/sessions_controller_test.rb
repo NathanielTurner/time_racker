@@ -25,18 +25,16 @@ class SessionsControllerTest < ActionController::TestCase
   end
 
   test "should delete session" do
-    delete destroy:
+    delete :destroy
     assert_response :success
     assert_equal nil, session[user_id]
   end
 
-#  test "create should validate programmer"
-#  post create:
-#    before(:each) do
-#      @ attr = { :email => "johndoe@example.com", :password => "secret" }
-#      Programmer.should_receive(:authenticate).
-#           with(@attr[:email], @attr[:password]).
-#           and_return(nil)
-#    end
-#  end
+  test "session should not be set when password is wrong" do
+    delete :destroy
+    post :create, session: { email: @programmer_one.email,
+        password: 'Yippy!!!!' }
+    assert_equal nil, session[user_id]
+  end
+
 end
