@@ -23,7 +23,7 @@ class TimeEntriesControllerTest < ActionController::TestCase
     end
 
     assert_not_nil assigns(:time_entry)
-    assert_redirected_to time_entries_path
+    assert_redirected_to projects_path
   end
 
 end
