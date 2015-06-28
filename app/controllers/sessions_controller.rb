@@ -5,8 +5,8 @@ class SessionsController < ApplicationController
 
   def create
     if request.post?
-      user = Programmer.find_by_email(params[:email])
-      if user && user.authenticate(params[:password])
+      user = Programmer.find_by(email: params[:session][:email])
+      if user && user.authenticate(params[:session][:password])
         session[:user_id] = user.id
         redirect_to projects_path, notice: 'Logged in Successfully'
       else
