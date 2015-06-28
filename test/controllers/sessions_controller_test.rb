@@ -21,6 +21,7 @@ class SessionsControllerTest < ActionController::TestCase
     post :create, session: { email: @programmer_one.email,
         password: @programmer_one.password }
     assert_equal @programmer_one.id, session[user_id]
+    delete :destory
   end
 
   test "should delete session" do
