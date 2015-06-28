@@ -17,7 +17,6 @@ class SessionsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-
   test "should set session[user_id] to programmer id" do
     post :create, session: { email: @programmer_one.email,
         password: @programmer_one.password }
@@ -25,6 +24,9 @@ class SessionsControllerTest < ActionController::TestCase
   end
 
   test "should delete session" do
+    post :create, session: { email: @programmer_two.email,
+        password: @programmer_two.password }
+    assert_equal @programmer_two.id, session[user_id]
     delete :destroy
     assert_response :success
     assert_equal nil, session[user_id]
