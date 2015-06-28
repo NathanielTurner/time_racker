@@ -37,4 +37,10 @@ class SessionsControllerTest < ActionController::TestCase
     assert_equal nil, session[user_id]
   end
 
+  test "session should not be set when email does not exist" do
+    delete :destroy
+    post :create, session: { email: "TheCakeIsAlie@portal.com",
+        password: @programmer_one.id }
+    assert_equal nil, session[user_id]
+  end
 end
