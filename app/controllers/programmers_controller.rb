@@ -11,10 +11,10 @@ class ProgrammersController < ApplicationController
     @programmer = Programmer.new(programmer_params)
     respond_to do |format|
       if @programmer.save
-        format.html { redirect_to  signin_path, flash[:notice] =
+        format.html { redirect_to  signin_path, notice:
             'The account was successfully created.' }
       else
-        format.html { render action: 'new' flash.now[:notice] =
+        format.html { render action: 'new', notice:
             'Something prevented this account from being created.' }
       end
     end

@@ -12,10 +12,10 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     respond_to do |format|
       if @project.save
-        format.html { redirect_to projects_path, flash[:notice] =
+        format.html { redirect_to projects_path, notice:
             'Project successfuly created' }
       else
-        format.html { render action: 'new', flash.now[:notice] =
+        format.html { render action: 'new', notice:
             'Something prevented project from being saved' }
       end
     end

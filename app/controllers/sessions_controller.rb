@@ -8,10 +8,9 @@ class SessionsController < ApplicationController
       user = Programmer.find_by_email(params[:email])
       if user && user.authenticate(params[:password])
         session[:user_id] = user.id
-        redirect_to projects_path,
-            flash[:notice] = 'Logged in Successfully'
+        redirect_to projects_path, notice: 'Logged in Successfully'
       else
-        format.html  { render action: 'new', flash.now[:notice] =
+        format.html  { render action: 'new', notice:
             'The email or password entered does not match our records.' }
       end
     end
@@ -19,7 +18,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    redirect_to signin_path, notice: "Logged out Successfully"
+    redirect_to signin_path, notice: 'Logged out Successfully'
   end
 
 end
