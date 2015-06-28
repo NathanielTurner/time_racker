@@ -11,7 +11,7 @@ class ProgrammersController < ApplicationController
     @programmer = Programmer.new(programmer_params)
     respond_to do |format|
       if @programmer.save
-        format.html { redirect_to  programmers_path, flash: {success: 'Programmer was successfuly created.'} }
+        format.html { redirect_to  sessions_new_path, flash: {success: 'Programmer was successfuly created.'} }
       else
         format.html { render action: 'new' }
       end

@@ -13,7 +13,8 @@ class TimeEntriesController < ApplicationController
 
     respond_to do |format|
       if @time_entry.save
-        format.html { redirect_to  time_entries_path, flash: {success: 'Time entry was successfuly recorded.'} }
+        format.html { redirect_to  projects_path,
+            flash: {success: 'Time entry was successfuly recorded.'} }
       else
         format.html { render action: 'new' }
       end
