@@ -13,7 +13,9 @@ Rails.application.routes.draw do
   get 'projects/create'
   resources :projects
   get '/signin' => 'sessions#new'
-  post '/sessions' => 'sessions#new'
+  post '/sessions' => 'sessions#create'
+  get '/signout' => 'sessions#destroy'
   delete '/signout' => 'sessions#destroy'
   get '/signup' => 'programmers#new'
+  resources :sessions
 end
