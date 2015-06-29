@@ -31,6 +31,5 @@ class TimeEntriesControllerTest < ActionController::TestCase
       post :create, time_entry: { duration: 1000, developer_id: 1,
           project_id: 1 }
     end
-  end
-
+  end    
 end
