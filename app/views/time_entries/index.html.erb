@@ -2,7 +2,7 @@
 <%= notice %>
 <table>
   <thead>
-    <tr>
+    <tr id="row-header">
       <th>Duration</th>
       <th>Entry Date</th>
       <th>Project</th>
@@ -11,15 +11,15 @@
   </thead>
 
   <tbody>
-    <% @time_entries.each do |entry| %>
-      <tr>
-        <td id="duration"><%= entry.duration %></td>
-        <td id="date"><%= entry.date %></td>
-        <td id="projet-id">
-          <%= @projects.find_by_id(entry.project_id).name %>
+    <% @time_entries.each do |e| %>
+      <tr id="row-body">
+        <td id="duration"><%= e.duration %></td>
+        <td id="date"><%= e.date %></td>
+        <td id="project-id">
+          <%= project_name(e.project_id) %>
         </td>
         <td id="programmer">
-          <%= @programmers.find_by_id(entry.programmer_id).full_name %>
+          <%= programmer_name(e.programmer_id) %>
         </td>
       </tr>
     <% end %>
