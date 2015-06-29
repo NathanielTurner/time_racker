@@ -4,6 +4,9 @@
   <thead>
     <tr>
       <th>Duration</th>
+      <th>Entry Date</th>
+      <th>Project</th>
+      <th>Programmer</th>
     </tr>
   </thead>
 
@@ -12,6 +15,12 @@
       <tr>
         <td id="duration"><%= entry.duration %></td>
         <td id="date"><%= entry.date %></td>
+        <td id="projet-id">
+          <%= @projects.find_by_id(entry.project_id).name %>
+        </td>
+        <td id="programmer">
+          <%= @programmers.find_by_id(entry.programmer_id).full_name %>
+        </td>
       </tr>
     <% end %>
   </tbody>
