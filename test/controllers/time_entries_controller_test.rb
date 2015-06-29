@@ -26,4 +26,11 @@ class TimeEntriesControllerTest < ActionController::TestCase
     assert_redirected_to projects_path
   end
 
+  test "should be able to create time_entry with dev and proj ids" do
+    assert_difference('TimeEntry.count') do
+      post :create, time_entry: { duration: 1000, developer_id: 1,
+          project_id: 1 }
+    end
+  end
+
 end
