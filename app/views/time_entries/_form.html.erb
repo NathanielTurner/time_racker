@@ -19,11 +19,8 @@
     <%= f.date_field :date%>
   <% end %>
 
-  <%= f.label :project_id do %>
-    <span class="field-label">Project Id</span>
-    <%= f.number_field :project_id%>
-  <% end %>
-
+  <%= f.hidden_field :project_id, :as => :hidden, :value => @project_id  %>
+  <%= f.hidden_field :programmer_id, :as => :hidden, :value => @programmer_id  %>
   <div class="actions">
     <%= f.submit %>
   </div>
