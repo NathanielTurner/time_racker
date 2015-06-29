@@ -11,7 +11,7 @@ class ProgrammersController < ApplicationController
     @programmer = Programmer.new(programmer_params)
     respond_to do |format|
       if @programmer.save
-        format.html { redirect_to  signin_path, notice:
+        format.html { redirect_to  projects_path, notice:
             'The account was successfully created.' }
       else
         format.html { render action: 'new', notice:
