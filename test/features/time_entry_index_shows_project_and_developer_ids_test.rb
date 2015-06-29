@@ -12,10 +12,12 @@ class TimeEntryIndexShowsProjectAndprogrammerIdsTest < Capybara::Rails::TestCase
     fill_in('Email', with: @programmer.email)
     fill_in('Password', with: 'seekrit')
     click_button('Sign In')
-    visit time_entries_new_path
+    visit projects_path
+    within_row(@project.name) do
+      click_link 'Add Time Entry'
+    end
     fill_in('Duration in Hours', with: 5)
     fill_in('Date Time was Spent', with: "06/26/2015")
-    fill_in('Project Id', with: @project.id)
     click_button('Create Time entry')
     visit time_entries_path
     header = page.find('#row-header')
