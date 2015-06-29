@@ -6,11 +6,13 @@ class TimeEntriesController < ApplicationController
 
   def index
     @time_entries = TimeEntry.all
+    @projects = Project.all
+    @programmers = Programmer.all
   end
 
   def create
     @time_entry = TimeEntry.new(time_entry_params)
-    @time_entry.developer_id = session[:user_id]
+    @time_entry.programmer_id = session[:user_id]
     respond_to do |format|
       if @time_entry.save
         format.html { redirect_to  projects_path, notice:

@@ -2,9 +2,11 @@
 # http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
+  id: 1
   name: read stuff
   time_limit: 1
 
 two:
+  id: 2
   name: build stuff
   time_limit: 2
