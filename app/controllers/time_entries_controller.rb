@@ -1,7 +1,8 @@
 class TimeEntriesController < ApplicationController
 
   def new
-    @time_entry = TimeEntry.new
+    @project_id = params[:project_id]
+    @time_entry = TimeEntry.new()
   end
 
   def index
@@ -14,7 +15,6 @@ class TimeEntriesController < ApplicationController
     if request.post?
       @time_entry = TimeEntry.new(time_entry_params)
       @time_entry.programmer_id = session[:user_id]
-
       if @time_entry.save
         flash[:notice] = 'Time entry was successfully recorded.'
         redirect_to  projects_path
@@ -32,6 +32,6 @@ class TimeEntriesController < ApplicationController
     end
 
     def time_entry_params
-      params.require(:time_entry).permit(:duration, :date, :project_id)
+      params.require(:time_entry).permit(:duration, :date, :project_id, :programmer_id)
     end
 end
