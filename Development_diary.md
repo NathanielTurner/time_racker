@@ -8,7 +8,7 @@ Sunday -
 ## Pieces and Components
 ### Big Picture Pieces
 * Organization
-* Developer
+* programmer
 * Time Entry
 * Project
 * Sessions
@@ -19,22 +19,22 @@ Sunday -
 
 ##### Organization
 * Fields: {:Name, :Description, :company_email, :admin_password}
-* Has Many :developers
+* Has Many :programmers
 * Has Many :projects
 * Has Many :time_entries
 
-##### Developer
+##### programmer
 * Fields: {:first_name, :last_name, :email, :password, :organization_id}
 * Belongs to Organization
 * Has Many :projects, through: :organization
 * Has Many :time_entries
 * Validates :first_name, :last_name, :email(form, uniqueness), :password
 ##### Time Entry
-* Fields: {:organization_id, :developer_id, :project_id, :duration}
-* Belongs to :company, :developer, :project
+* Fields: {:organization_id, :programmer_id, :project_id, :duration}
+* Belongs to :company, :programmer, :project
 ##### Project
-* Fields: {:title, :description, :company_id, :developer_id, :max_hours}
-* Belongs to :company, :developer
+* Fields: {:title, :description, :company_id, :programmer_id, :max_hours}
+* Belongs to :company, :programmer
 * Has Many :time_entries
 ##### Sessions
 
@@ -87,8 +87,8 @@ no view but enables creating using strong params.
 
 ##### (2.outline)
 
-I can create and view developers
-* requires a database migration and model for developer with field :first_name, :last_name, :email, :password:digest. model has_secure_password
+I can create and view programmers
+* requires a database migration and model for programmer with field :first_name, :last_name, :email, :password:digest. model has_secure_password
 * requires a controller with new, create, and index actions
 * requires a new.html.erb view
 * requires a _new_form.html.erb partial
@@ -125,4 +125,43 @@ views
 * create
 no view but enables creating using strong params.
 
+#### (3.build.complete 06/26/2015)
+
+#### (4.outline) Programmers can log in and out.
+
+* requires a session controller with actions new, create and destroy
+* new action render a view partial with a form named sign-in that allows entering password and email.
+* create action reads the form partial params looks for a programmer in the database by email param.
+* if author is found it authenticates the passed password with found programmers password.
+* if successful, it makes a session with user_id equal to the found authors id. it then redirects to projects_path.
+* if it fails it flashes Login failed
+* destroy action makes the values stored in the session for user_id nil than redirects to sessions_new_path
+* requires route get '/signin' => 'sessions/new'
+               signin_path
+* requires route delete '/signout' => 'sessions/destroy'
+               signout_path
+* requires route post '/sessions'
+               sessions/path
+* requires a view for new which render a -form partial
+* the form partial requires form_for to be (:session, :url => sessions_path) since there is no model for rails to infer the path via.
+* _form partial requires two field inputs, email and password.
+* new view requires a new user link_to that redirects to programmers_new_path.
+
+#### (4.build.complete 06/29/2015 PM 10:50)
+
+#### (5.outline) time_entry index page will show the project its entered for, and the programmer who entered it.
+##### (5.build)
+* TimeEntry needs project_id column and programmer_id column.
+* TimeEntry model need Belongs to project, and belongs_to programmer.
+* project model needs has_many programmers,  and has_many time entries
+* time entry _form needs a input field for project_id, but an upcoming feature will include having a button on projects to enter a time entry which will pass new action the project_id for the project it was clicked on, which the action will use to set the project_id.
+* The programer id will be set by the new action using the session[_user_id] implemented in the last feature.
+* The time entry index view will need a module that has defs programer, and project. these defs are called in the _form partial
+for each time_entry and return the names of the projects and programs linked to the time entry.
+
+#####(5.test setup)
+* time entry controller test needs
+* feature test will login and create time entry and his id should match time entries.
+* models will test now test for associations.
+#####
 ## Current Issues or Problems
