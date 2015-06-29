@@ -8,14 +8,14 @@ class ProgrammersController < ApplicationController
   end
 
   def create
-    @programmer = Programmer.new(programmer_params)
-    respond_to do |format|
+    if request.post?
+      @programmer = Programmer.new(programmer_params)
       if @programmer.save
-        format.html { redirect_to  projects_path, notice:
-            'The account was successfully created.' }
+        flash[:notice] = 'The account was successfully created.'
+        redirect_to  projects_path
       else
-        format.html { render action: 'new', notice:
-            'Something prevented this account from being created.' }
+        flash.now[:notice] = 'Something prevented this account from being created.'
+        render action: 'new'
       end
     end
   end

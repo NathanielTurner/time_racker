@@ -11,15 +11,16 @@ class TimeEntriesController < ApplicationController
   end
 
   def create
-    @time_entry = TimeEntry.new(time_entry_params)
-    @time_entry.programmer_id = session[:user_id]
-    respond_to do |format|
+    if request.post?
+      @time_entry = TimeEntry.new(time_entry_params)
+      @time_entry.programmer_id = session[:user_id]
+
       if @time_entry.save
-        format.html { redirect_to  projects_path, notice:
-            'Time entry was successfuly recorded.' }
+        flash[:notice] = 'Time entry was successfully recorded.'
+        redirect_to  projects_path
       else
-        format.html { render action: 'new', notice:
-            'Something prevented this time entry from being saved.' }
+        flash.now[:notice] = 'Something prevented this time entry from being saved.'
+        render action: 'new'
       end
     end
   end

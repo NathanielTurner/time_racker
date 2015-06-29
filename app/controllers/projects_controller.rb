@@ -9,14 +9,14 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.new(project_params)
-    respond_to do |format|
+    if request.post?
+      @project = Project.new(project_params)
       if @project.save
-        format.html { redirect_to projects_path, notice:
-            'Project successfuly created' }
+        flash[:notice] = 'Project was successfully created'
+        redirect_to projects_path
       else
-        format.html { render action: 'new', notice:
-            'Something prevented project from being saved' }
+        flash.now[:notice] = 'Something prevented project from being saved'
+        render action: 'new'
       end
     end
   end
