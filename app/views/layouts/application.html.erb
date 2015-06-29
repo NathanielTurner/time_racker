@@ -8,6 +8,13 @@
 </head>
 <body>
 
+<ul>
+    <% unless session[:user_id] == nil %>
+      <li>Logged in as: <%= Programmer.find_by(id: session[:user_id]).first_name %></li>
+      <li><%= link_to "Sign Out", signout_path %></li>
+    <% end %>
+</ul>
+
 <%= yield %>
 
 </body>
