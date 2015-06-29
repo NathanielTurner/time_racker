@@ -163,5 +163,5 @@ for each time_entry and return the names of the projects and programs linked to 
 * time entry controller test needs
 * feature test will login and create time entry and his id should match time entries.
 * models will test now test for associations.
-#####
+#### (5.build.complete 06/29/2015 PM 9:10)
 ## Current Issues or Problems
