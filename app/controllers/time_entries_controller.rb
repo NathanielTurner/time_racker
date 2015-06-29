@@ -10,7 +10,7 @@ class TimeEntriesController < ApplicationController
 
   def create
     @time_entry = TimeEntry.new(time_entry_params)
-
+    @time_entry.developer_id = session[:user_id]
     respond_to do |format|
       if @time_entry.save
         format.html { redirect_to  projects_path, notice:
