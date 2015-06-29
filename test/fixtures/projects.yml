@@ -3,10 +3,10 @@
 
 one:
   id: 1
-  name: read stuff
+  name: 'read stuff'
   time_limit: 1
 
 two:
   id: 2
-  name: build stuff
+  name: 'build stuff'
   time_limit: 2
