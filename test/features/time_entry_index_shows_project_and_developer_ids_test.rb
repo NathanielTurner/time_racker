@@ -1,10 +1,10 @@
 require "test_helper"
-
+include FeatureHelper
 class TimeEntryIndexShowsProjectAndprogrammerIdsTest < Capybara::Rails::TestCase
+
   setup do
-    @programmer = Programmer.create(first_name: "First", last_name:
-        "Last", email: "firstlast@example.com", password: "seekrit")
-    @project = Project.create(name: 'Make Skynet', time_limit: 3000)
+    @programmer = FeatureHelper.set_programmer
+    @project = FeatureHelper.set_project
   end
 
   test "can create a new time entry and dev id and proj id will show" do
@@ -14,15 +14,18 @@ class TimeEntryIndexShowsProjectAndprogrammerIdsTest < Capybara::Rails::TestCase
     click_button('Sign In')
     visit time_entries_new_path
     fill_in('Duration in Hours', with: 5)
-    fill_in('Date Time was Spent', with: 06/26/2015)
+    fill_in('Date Time was Spent', with: "06/26/2015")
     fill_in('Project Id', with: @project.id)
     click_button('Create Time entry')
     visit time_entries_path
-    assert_content page, 'Project'
-    assert_content page, 'Programmer'
-    page.all('#row-body tr').each do |tr|
-      assert_equal page, 'read stuff'
-      assert_equal page, @programmer.full_name 
+    header = page.find('#row-header')
+    assert_content header, 'Project'
+    entries = page.all('#row-body')
+    assert_content 'Programmer'
+    entries.last do |row|
+      datas = row.all('td')
+      assert_content datas[2], 'Build Skynet'
+      assert_content datas[3], @programmer.full_name
     end
   end
 end
