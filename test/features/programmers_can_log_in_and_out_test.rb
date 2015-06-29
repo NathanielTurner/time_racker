@@ -1,9 +1,8 @@
 require "test_helper"
-
+include FeatureHelper
 class ProgrammersCanLogInAndOutTest < Capybara::Rails::TestCase
   setup do
-    @programmer = Programmer.create(first_name: "First", last_name:
-        "Last", email: "firstlast@example.com", password: "seekrit")
+    @programmer = FeatureHelper.set_programmer
   end
 
   test "signin page renders" do
@@ -22,8 +21,6 @@ class ProgrammersCanLogInAndOutTest < Capybara::Rails::TestCase
     fill_in('Email', with: @programmer.email)
     fill_in('Password', with: 'seekrit')
     click_button('Sign In')
-# theres no access to the session here. Ile have to figure something out
-#    assert_equal @programmer.id, session[:user_id]
     assert_content page, 'Project List'
     visit signout_path
   end
@@ -33,8 +30,6 @@ class ProgrammersCanLogInAndOutTest < Capybara::Rails::TestCase
     fill_in('Email', with: @programmer.email)
     fill_in('Password', with: 'seekrit')
     click_button('Sign In')
-# theres no access to the session here. Ile have to figure something out
-#    assert_equal @programmer.id, session[:user_id]
     click_link('Sign Out')
     assert_content page, 'Sign In'
   end
