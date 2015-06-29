@@ -13,6 +13,10 @@
       <tr>
         <td id="project-name"><%= project.name %></td>
         <td id="time-limit"><%= project.time_limit %></td>
+        <td><%= link_to 'Add Time Entry',
+            {:controller: 'time_entries', :action => 'new',
+                :project_id => project.id }%>
+        </td>
       </tr>
     <% end %>
   </tbody>
