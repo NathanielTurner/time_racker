@@ -13,9 +13,15 @@
     <span class="field-label">Duration in Hours</span>
     <%= f.number_field :duration %>
   <% end %> </br>
+
   <%= f.label :date do %>
     <span class="field-label">Date Time was Spent</span>
     <%= f.date_field :date%>
+  <% end %>
+
+  <%= f.label :project_id do %>
+    <span class="field-label">Project Id</span>
+    <%= f.number_field :project_id%>
   <% end %>
 
   <div class="actions">
