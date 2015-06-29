@@ -1,10 +1,16 @@
 require 'test_helper'
 
 class TimeEntryTest < ActiveSupport::TestCase
-  entry_one = TmeEntry.create(duration: 12, developer_id: 1,
-      project_id: 1 )
-  entry_two = TimeEntry.create(duration: 15, developer_id: 1,
-      project_id: 1 )
-  assert_equal 2, Developer.find_by_id(1).time_entries.count
-  assert_equal 2, Project.find_by_id(1).time_entries.count
+  setup do
+    @programmer = programmers(:john)
+    @project = projects(:one)
+  end
+  test "time entry associations" do
+  entry_one = TimeEntry.create(duration: 12,
+      programmer_id: @programmer.id, project_id: @project.id )
+  entry_two = TimeEntry.create(duration: 15,
+      programmer_id: @programmer.id, project_id: @project.id )
+  assert_equal 2, @programmer.time_entries.count
+  assert_equal 2, @project.time_entries.count
+end
 end
