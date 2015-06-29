@@ -11,5 +11,11 @@ module FeatureHelper
     project = Project.create(name: "Build Skynet", time_limit: 3000)
     return project
   end
-  
+
+  def within_row(text, &block)
+    within :xpath, "//table//tr[td[contains(.,\"#{text}\")]]" do
+      yield
+    end
+  end
+
 end
